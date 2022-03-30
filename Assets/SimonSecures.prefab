@@ -2916,6 +2916,7 @@ MonoBehaviour:
   rButton: {fileID: 114429844726823772}
   sButton: {fileID: 114442734607966218}
   kButton: {fileID: 114139271513176804}
+  buttonText: {fileID: 102050391625491106}
 --- !u!114 &114802817555756016
 MonoBehaviour:
   m_ObjectHideFlags: 1

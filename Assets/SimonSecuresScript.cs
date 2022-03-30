@@ -13,6 +13,8 @@ public class SimonSecuresScript : ModuleScript
     private MeshRenderer screen;
     [SerializeField]
     private ButtonManager rButton, sButton, kButton;
+    [SerializeField]
+    private TextMesh buttonText;
 
     private string ScreenWord;
 
@@ -83,7 +85,11 @@ public class SimonSecuresScript : ModuleScript
         if((expected == Command.Turn && Mathf.FloorToInt(Get<KMBombInfo>().GetTime()) % 10 == commandVar) ^ wrong)
             Generate();
         else
+        {
             Incorrect("You turned the key on a {0}.".Form(Mathf.FloorToInt(Get<KMBombInfo>().GetTime()) % 10));
+            if(!wrong && expected == Command.Turn && Mathf.FloorToInt(Get<KMBombInfo>().GetTime()) % 10 != commandVar)
+                Generate(false);
+        }
     }
 
     private void SRelease()
@@ -101,8 +107,13 @@ public class SimonSecuresScript : ModuleScript
         Strike("You messed it up! " + log);
     }
 
-    private void Generate()
+    private void Generate(bool inc = true)
     {
+        if(!inc)
+        {
+            Log("Since you struck, this new display will not count towards you stage count.");
+            stages--;
+        }
         if(stages++ >= 5)
         {
             Solve("Good job!");
@@ -357,6 +368,13 @@ public class SimonSecuresScript : ModuleScript
     private IEnumerator ProcessTwitchCommand(string command)
     {
         Match m;
+        if(Regex.IsMatch(command.Trim().ToLowerInvariant(), @"\s*j\s*"))
+        {
+            yield return null;
+            buttonText.text = "J";
+            yield return "sendtochat j";
+            yield break;
+        }
         if(!(m = Regex.Match(command.Trim().ToLowerInvariant(), "(hold|mash|unlock)\\s+(\\d)")).Success)
             yield break;
         yield return null;

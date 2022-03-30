@@ -21,6 +21,6 @@ MonoBehaviour:
 
 
     You know where to get your manuals.'
-  version: 1.0
+  version: 1.1
   outputFolder: build
   previewImage: {fileID: 2800000, guid: ae7d440b812c500478ef8e76ce329dd4, type: 3}
