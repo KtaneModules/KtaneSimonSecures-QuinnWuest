@@ -2912,6 +2912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dafe65dd2d50bec4ba2af8807820d185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _editorRuleSeed: 1
   screen: {fileID: 23832675730497450}
   rButton: {fileID: 114429844726823772}
   sButton: {fileID: 114442734607966218}
