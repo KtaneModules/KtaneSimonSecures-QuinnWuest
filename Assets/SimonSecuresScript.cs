@@ -9,12 +9,9 @@ using RNG = UnityEngine.Random;
 
 public class SimonSecuresScript : ModuleScript
 {
-    [SerializeField]
-    private MeshRenderer screen;
-    [SerializeField]
-    private ButtonManager rButton, sButton, kButton;
-    [SerializeField]
-    private TextMesh buttonText;
+    public MeshRenderer screen;
+    public ButtonManager rButton, sButton, kButton;
+    public TextMesh buttonText;
 
     private string ScreenWord;
 
